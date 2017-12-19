@@ -7,11 +7,11 @@ class App extends Component {
   state = {
     forecast: [],
     fahrenheit: true,
-    area: 11101
+    zip: 11101
   }
 
   fetchWeather = () => {
-    return fetch(`http://api.aerisapi.com/forecasts/${this.state.area}?client_id=${accessId}&client_secret=${APIkey}`)
+    return fetch(`http://api.aerisapi.com/forecasts/${this.state.zip}?client_id=${accessId}&client_secret=${APIkey}`)
     .then((res) => res.json())
   }
 
@@ -38,7 +38,7 @@ class App extends Component {
     })
   }
 
-  searchAreaCode = (e) => {
+  searchZipCode = (e) => {
     e.preventDefault()
     this.fetchWeather()
     .then((json) => {
@@ -48,21 +48,21 @@ class App extends Component {
 
   handleChange = (e) => {
     this.setState({
-      area: e.target.value
+      zip: e.target.value
     })
   }
 
 
   render() {
     const icons = this.importAll(require.context('./icons', false, /\.(png|jpe?g|svg)$/));
-    console.log(this.state.area)
+    console.log(this.state.zip)
 
     return (
       <div className="App">
         <h1>7-Day Forecast for</h1>
-        <form onSubmit={this.searchAreaCode}>
+        <form onSubmit={this.searchZipCode}>
           <label type='text'>
-            Area code: <input placeholder='11101' name='code' value={this.state.area} onChange={this.handleChange}/>
+            Zip code: <input placeholder='11101' name='code' value={this.state.zip} onChange={this.handleChange}/>
           </label>
           <input type="submit" value="Get Weather" className='button'/>
         </form>
