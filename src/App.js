@@ -55,7 +55,6 @@ class App extends Component {
 
   render() {
     const icons = this.importAll(require.context('./icons', false, /\.(png|jpe?g|svg)$/));
-    console.log(this.state.zip)
 
     return (
       <div className="App">
