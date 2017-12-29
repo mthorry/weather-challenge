@@ -10,16 +10,16 @@ class App extends Component {
     zip: 11101
   }
 
-  fetchWeather = () => {
-    return fetch(`http://api.aerisapi.com/forecasts/${this.state.zip}?client_id=${accessId}&client_secret=${APIkey}`)
-    .then((res) => res.json())
-  }
-
   componentDidMount = () => {
     this.fetchWeather()
     .then((json) => {
         this.setState({ forecast: json.response[0].periods })
       })
+  }
+
+  fetchWeather = () => {
+    return fetch(`http://api.aerisapi.com/forecasts/${this.state.zip}?client_id=${accessId}&client_secret=${APIkey}`)
+    .then((res) => res.json())
   }
 
   formatDate = (date) => {
