@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   fetchWeather = () => {
-    return fetch(`http://api.aerisapi.com/forecasts/${this.state.zip}?client_id=${accessId}&client_secret=${APIkey}`)
+    return fetch(`https://api.aerisapi.com/forecasts/${this.state.zip}?client_id=${accessId}&client_secret=${APIkey}`)
     .then((res) => res.json())
   }
 
